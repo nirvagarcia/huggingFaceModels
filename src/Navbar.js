@@ -5,14 +5,15 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import styles from './styles';
 
 const models = [
+    { id: 1, label: "GPT-2", description: "Good for text generation" },
     { id: 2, label: "Llama 3.2 3B", description: "Enhanced performance for complex tasks" },
-    { id: 1, label: "Llama 3.2 1B", description: "Ideal for general tasks" },
-    { id: 3, label: "Claude V4", description: "Optimized for creative content generation" }
+    { id: 3, label: "Llama 3.2 1B", description: "Ideal for general tasks" },
+    { id: 4, label: "Claude V4", description: "Optimized for creative content generation" }
 ];
 
-function Navbar() {
+function Navbar({ setSelectedModel }) {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [selectedModel, setSelectedModel] = useState(models[0]);
+    const [selectedModelState, setSelectedModelState] = useState(models[0]);
     const itemRefs = useRef([]);
     const [maxMenuWidth, setMaxMenuWidth] = useState(0);
 
@@ -25,6 +26,7 @@ function Navbar() {
     };
 
     const handleSelect = (model) => {
+        setSelectedModelState(model); 
         setSelectedModel(model);
         handleClose();
     };
@@ -55,7 +57,7 @@ function Navbar() {
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Typography variant="h6" color="#B4B4B4" sx={{ marginRight: 1 }}>
-                        {selectedModel.label}
+                        {selectedModelState.label}
                     </Typography>
                     <IconButton onClick={handleClick} color="inherit">
                         <KeyboardArrowDownIcon />
@@ -77,7 +79,7 @@ function Navbar() {
                         {models.map((model, index) => (
                             <MenuItem
                                 key={model.id}
-                                selected={model.id === selectedModel.id}
+                                selected={model.id === selectedModelState.id}
                                 onClick={() => handleSelect(model)}
                                 ref={el => itemRefs.current[index] = el}
                                 sx={styles.menuItem}
@@ -88,7 +90,7 @@ function Navbar() {
                                         {model.description}
                                     </Typography>
                                 </Typography>
-                                {model.id === selectedModel.id && <CheckCircleIcon sx={styles.modelSelection} />}
+                                {model.id === selectedModelState.id && <CheckCircleIcon sx={styles.modelSelection} />}
                             </MenuItem>
                         ))}
                     </Menu>

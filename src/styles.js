@@ -6,13 +6,13 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         position: 'relative',
         height: '100vh',
         width: '100%',
         padding: 0,
         boxSizing: 'border-box'
-    },
+    }, 
     header: {
         fontSize: '24px',
         color: '#B4B4B4',
@@ -22,10 +22,25 @@ const styles = {
         transform: 'translate(-50%, -50%)'
     },
     textField: {
-        input: {
+        '& .MuiInputBase-input': {
             color: '#fff',
-            paddingLeft: '20px',
+            paddingLeft: '10px',
+            paddingBottom: '3px',
         },
+        '&::-webkit-scrollbar': {
+            width: '8px',
+            backgroundColor: 'rgba(0,0,0,0.05)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            borderRadius: '10px',
+            backgroundColor: 'rgba(255,255,255,0.3)',
+            border: '2px solid transparent',
+            backgroundClip: 'padding-box',
+        },
+        '&::-webkit-scrollbar-track': {
+            borderRadius: '10px',
+            boxShadow: 'inset 0 0 5px rgba(0,0,0,0.3)',
+        },    
         '& .MuiOutlinedInput-root': {
             backgroundColor: '#2F2F2F',
             borderRadius: '20px',
@@ -46,7 +61,7 @@ const styles = {
         '&:hover': {
             color: 'white',
         }
-    },
+    },  
     textFieldBox: {
         position: 'absolute',
         bottom: 0,
@@ -95,7 +110,54 @@ const styles = {
     },
     modelSelection: {
         color: '#D0D0D0', fontSize: '1.25rem' 
-    }
+    },
+    chatBox: {
+        width: '75%',
+        height: 'calc(80vh - 65px)',    
+        overflowY: 'auto',
+        padding: '10px',
+        backgroundColor: 'transparent',
+        borderRadius: '10px',
+        marginBottom: '20px',
+        '&::-webkit-scrollbar': {
+            width: '8px',
+            backgroundColor: 'rgba(0,0,0,0.05)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            borderRadius: '10px',
+            backgroundColor: 'rgba(255,255,255,0.3)',
+            border: '2px solid transparent',
+            backgroundClip: 'padding-box',
+        },
+        '&::-webkit-scrollbar-track': {
+            borderRadius: '10px',
+            boxShadow: 'inset 0 0 5px rgba(0,0,0,0.3)',
+        }
+    },
+    userMessage: {
+        alignSelf: 'flex-end',
+        backgroundColor: '#484848',
+        padding: '10px',
+        borderRadius: '10px',
+        marginBottom: '10px',
+        maxWidth: '70%',
+        minWidth: '1px',
+        width: 'fit-content',
+        wordWrap: 'break-word',
+        marginLeft: 'auto',
+        textAlign: 'right',
+    },   
+    botMessage: {
+        alignSelf: 'flex-start',
+        backgroundColor: '#292929',
+        padding: '10px',
+        borderRadius: '10px',
+        marginBottom: '10px',
+        maxWidth: '70%',
+        minWidth: '1px',
+        width: 'fit-content',
+        wordWrap: 'break-word',
+    },
 };
 
 export default styles;
